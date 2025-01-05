@@ -1,172 +1,42 @@
+/* Estilos Globais */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 body {
     font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-header h2 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700; /* Negrito para o título */
-}
-
-.lista-produtos-single h3 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400; /* Regular para os nomes dos produtos */
-}
-
+/* Cabeçalho */
 header {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 80px;
     background-color: blueviolet;
-    text-align: center;
     color: white;
-}
-
-.lista-cadastro {
-    display: flex;
-    max-width: 80%;
-    align-items: center;
-    margin: 20px auto;
-    padding: 0 20px;
-}
-
-.lista-cadastro input[type="submit"] {
-    padding: 10px 20px;
-    background-color: blueviolet;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.lista-cadastro input[type="submit"]:hover {
-    background-color: darkblue;
-}
-
-.lista-cadastro input[type="text"] {
-    flex: 1;
-    padding: 10px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    outline-color: blueviolet;
-}
-
-.lista-produtos {
-    max-width: 80%;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.lista-produtos-single {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 10px;
-}
-
-.lista-produtos-single h3 {
-    flex: 1;
-    margin-right: 10px;
-
-}
-
-.lista-produtos-single span {
-    margin-right: 20px;
-    font-size:larger;
-    font-style: bold;
-}
-
-.lista-produtos-single button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.lista-produtos-single button:hover {
-    background-color: darkred;
-}
-
-.soma-produto {
-    max-width: 80%;
-    margin: 0 auto;
-    padding: 0 20px;
-    text-align: right;
-}
-
-#limpar-lista {
-    background-color: blueviolet;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: all 0.3s ease;
-}
-
-#limpar-lista:hover {
-    background-color: darkblue;
-}
-
-/* Estilos base (para telas maiores) */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
+    text-align: center; /* Centraliza o texto */
 }
 
 header h2 {
-    font-family: 'Roboto', sans-serif;
     font-weight: 700;
+    font-size: 2.2rem;
+    margin: 0; /* Remove margens padrão */
 }
 
-.lista-produtos-single h3 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-}
-
-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80px;
-    background-color: blueviolet;
-    text-align: center;
-    color: white;
-}
-
+/* Formulário de Cadastro */
 .lista-cadastro {
     display: flex;
     max-width: 80%;
     align-items: center;
     margin: 20px auto;
     padding: 0 20px;
-}
-
-.lista-cadastro input[type="submit"] {
-    padding: 10px 20px;
-    background-color: blueviolet;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.lista-cadastro input[type="submit"]:hover {
-    background-color: darkblue;
 }
 
 .lista-cadastro input[type="text"] {
@@ -177,10 +47,25 @@ header {
     outline-color: blueviolet;
 }
 
+.lista-cadastro input[type="submit"] {
+    padding: 10px 20px;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.lista-cadastro input[type="submit"]:hover {
+    background-color: darkblue;
+}
+
+/* Lista de Produtos */
 .lista-produtos {
     max-width: 80%;
     margin: 0 auto;
     padding: 0 20px;
+    flex: 1;
 }
 
 .lista-produtos-single {
@@ -192,15 +77,20 @@ header {
     margin-bottom: 10px;
 }
 
-.lista-produtos-single h3 {
-    flex: 1;
-    margin-right: 10px;
+.lista-produtos-single .produto-info {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o nome e o preço */
 }
 
-.lista-produtos-single span {
-    margin-right: 20px;
-    font-size: larger;
-    font-style: bold;
+.lista-produtos-single h3 {
+    font-weight: 400;
+    font-size: 1.3rem;
+}
+
+.lista-produtos-single .produto-info span {
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .lista-produtos-single button {
@@ -209,18 +99,26 @@ header {
     border: none;
     padding: 5px 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaço entre o ícone e o texto */
 }
 
 .lista-produtos-single button:hover {
     background-color: darkred;
 }
 
+/* Total e Botão de Limpar */
 .soma-produto {
     max-width: 80%;
     margin: 0 auto;
     padding: 0 20px;
     text-align: right;
+}
+
+.soma-produto h1 {
+    font-size: 1.7rem;
 }
 
 #limpar-lista {
@@ -230,7 +128,7 @@ header {
     padding: 10px 20px;
     cursor: pointer;
     margin-top: 10px;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 #limpar-lista:hover {
@@ -238,12 +136,30 @@ header {
 }
 
 /* Media Queries para Responsividade */
-
-/* Para telas menores que 768px (tablets e celulares) */
 @media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    header {
+        height: 60px; /* Ajusta a altura do header para dispositivos móveis */
+        padding: 10px; /* Ajusta o padding do header para dispositivos móveis */
+    }
+
+    header h2 {
+        font-size: 1.8rem; /* Ajusta o tamanho da fonte do título para dispositivos móveis */
+    }
+
     .lista-cadastro {
         flex-direction: column;
-        max-width: 90%;
+        max-width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+        padding: 10px;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
     }
 
     .lista-cadastro input[type="text"] {
@@ -258,283 +174,80 @@ header {
 
     .lista-produtos {
         max-width: 90%;
+        padding: 0 10px;
+        margin-bottom: 80px; /* Espaço para o formulário fixo na parte inferior */
     }
 
     .lista-produtos-single {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .lista-produtos-single .produto-info {
+        display: flex;
+        align-items: center;
+        gap: 10px; /* Espaço entre o nome e o preço */
+        flex: 1;
     }
 
     .lista-produtos-single h3 {
-        margin-bottom: 5px;
+        font-weight: 400;
+        font-size: 1.3rem;
     }
 
-    .lista-produtos-single span {
-        margin-bottom: 5px;
+    .lista-produtos-single .produto-info span {
+        font-size: 1.2rem;
+        font-weight: bold;
     }
 
     .lista-produtos-single button {
-        width: 100%;
-        margin-top: 10px;
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 5px; /* Espaço entre o ícone e o texto */
     }
 
+    .lista-produtos-single button:hover {
+        background-color: darkred;
+    }
+    
     .soma-produto {
         max-width: 90%;
-    }
-}
-
-/* Para telas menores que 480px (celulares pequenos) */
-@media (max-width:  480px) {
-    header {
-        height: 60px;
+        margin: 0 auto;
+        padding: 0 10px;
+        text-align: right;
+        margin-bottom: 20px; /* Ajusta o margin-bottom para dispositivos móveis */
     }
 
-    header h2 {
-        font-size: 1.5em;
-    }
-
-    .lista-cadastro input[type="text"] {
-        padding: 8px;
-    }
-
-    .lista-produtos-single {
-        padding: 8px;
-    }
-
-    .lista-produtos-single h3 {
-        font-size: 1.2em;
-    }
-
-    .lista-produtos-single span {
-        font-size: 1.1em;
-    }
-
-    .soma-produto {
-        font-size: 1.2em;
+    .soma-produto h1 {
+        font-size: 1.5rem; /* Ajusta o tamanho da fonte do total para dispositivos móveis */
     }
 
     #limpar-lista {
-        padding: 8px 15px;
-    }
-}
-
-### **2. Ajustes no HTML (se necessário)**
-
-Verifique se o HTML está estruturado corretamente para suportar a responsividade. Aqui estão algumas dicas:
-
-- **Utilizar classes e IDs**: Certifique-se de que os elementos têm classes e IDs apropriados para que os estilos CSS possam ser aplicados corretamente.
-  
-- **Meta Tag de Viewport**: Adicione a seguinte meta tag no `<head>` do seu `index.html` para garantir que o layout se ajuste corretamente em dispositivos móveis:
-
-```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0">/* Estilos base (para telas maiores) */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-}
-
-header h2 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-}
-
-.lista-produtos-single h3 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-}
-
-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80px;
-    background-color: blueviolet;
-    text-align: center;
-    color: white;
-}
-
-.lista-cadastro {
-    display: flex;
-    max-width: 80%;
-    align-items: center;
-    margin: 20px auto;
-    padding: 0 20px;
-}
-
-.lista-cadastro input[type="submit"] {
-    padding: 10px 20px;
-    background-color: blueviolet;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.lista-cadastro input[type="submit"]:hover {
-    background-color: darkblue;
-}
-
-.lista-cadastro input[type="text"] {
-    flex: 1;
-    padding: 10px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    outline-color: blueviolet;
-}
-
-.lista-produtos {
-    max-width: 80%;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.lista-produtos-single {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 10px;
-}
-
-.lista-produtos-single h3 {
-    flex: 1;
-    margin-right: 10px;
-}
-
-.lista-produtos-single span {
-    margin-right: 20px;
-    font-size: larger;
-    font-style: bold;
-}
-
-.lista-produtos-single button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.lista-produtos-single button:hover {
-    background-color: darkred;
-}
-
-.soma-produto {
-    max-width: 80%;
-    margin: 0 auto;
-    padding: 0 20px;
-    text-align: right;
-}
-
-#limpar-lista {
-    background-color: blueviolet;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: all 0.3s ease;
-}
-
-#limpar-lista:hover {
-    background-color: darkblue;
-}
-
-/* Media Queries para Responsividade */
-
-/* Para telas menores que 768px (tablets e celulares) */
-@media (max-width: 768px) {
-    .lista-cadastro {
-        flex-direction: column;
-        max-width: 90%;
-    }
-
-    .lista-cadastro input[type="text"] {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    .lista-cadastro input[type="submit"] {
-        width: 100%;
-    }
-
-    .lista-produtos {
-        max-width: 90%;
-    }
-
-    .lista-produtos-single {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .lista-produtos-single h3 {
-        margin-bottom: 5px;
-    }
-
-    .lista-produtos-single span {
-        margin-bottom: 5px;
-    }
-
-    .lista-produtos-single button {
-        width: 100%;
+        background-color: blueviolet;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
         margin-top: 10px;
+        transition: background-color 0.3s ease;
+        width: 100%; /* Ajusta a largura do botão para dispositivos móveis */
     }
 
+    #limpar-lista:hover {
+        background-color: darkblue;
+    }
     .soma-produto {
-        max-width: 90%;
+        display: none; /* Oculta a soma-produtos por padrão */
     }
-}
-
-/* Para telas menores que 480px (celulares pequenos) */
-@media (max-width:  480px) {
-    header {
-        height: 60px;
-    }
-
-    header h2 {
-        font-size: 1.5em;
-    }
-
-    .lista-cadastro input[type="text"] {
-        padding: 8px;
-    }
-
-    .lista-produtos-single {
-        padding: 8px;
-    }
-
-    .lista-produtos-single h3 {
-        font-size: 1.2em;
-    }
-
-    .lista-produtos-single span {
-        font-size: 1.1em;
-    }
-
-    .soma-produto {
-        font-size: 1.2em;
-    }
-
+    
     #limpar-lista {
-        padding: 8px 15px;
+        display: none; /* Oculta o botão de limpar lista por padrão */
     }
+
 }
-
-### **2. Ajustes no HTML (se necessário)**
-
-Verifique se o HTML está estruturado corretamente para suportar a responsividade. Aqui estão algumas dicas:
-
-- **Utilizar classes e IDs**: Certifique-se de que os elementos têm classes e IDs apropriados para que os estilos CSS possam ser aplicados corretamente.
-  
-- **Meta Tag de Viewport**: Adicione a seguinte meta tag no `<head>` do seu `index.html` para garantir que o layout se ajuste corretamente em dispositivos móveis:
-
-```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
