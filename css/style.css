@@ -21,51 +21,54 @@ header {
     height: 80px;
     background-color: blueviolet;
     color: white;
-    text-align: center; /* Centraliza o texto */
+    text-align: center;
 }
 
 header h2 {
     font-weight: 700;
     font-size: 2.2rem;
-    margin: 0; /* Remove margens padrão */
+    margin: 0;
 }
 
 /* Formulário de Cadastro */
 .lista-cadastro {
-    display: flex;
     max-width: 80%;
-    align-items: center;
     margin: 20px auto;
     padding: 0 20px;
+    display: flex;
+    gap: 10px;
 }
 
 .lista-cadastro input[type="text"] {
     flex: 1;
     padding: 10px;
-    margin-right: 10px;
     border: 1px solid #ccc;
+    border-radius: 5px;
     outline-color: blueviolet;
 }
 
-.lista-cadastro input[type="submit"] {
-    padding: 10px 20px;
+.botao-adicionar-produto {
     background-color: blueviolet;
     color: white;
     border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-.lista-cadastro input[type="submit"]:hover {
+.botao-adicionar-produto:hover {
     background-color: darkblue;
 }
 
-/* Lista de Produtos */
+/* Lista de produtos */
 .lista-produtos {
     max-width: 80%;
     margin: 0 auto;
     padding: 0 20px;
-    flex: 1;
 }
 
 .lista-produtos-single {
@@ -75,179 +78,121 @@ header h2 {
     padding: 10px;
     border-bottom: 1px solid #ccc;
     margin-bottom: 10px;
-}
-
-.lista-produtos-single .produto-info {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Espaço entre o nome e o preço */
+    gap: 10px;
 }
 
 .lista-produtos-single h3 {
+    flex: 1;
     font-weight: 400;
     font-size: 1.3rem;
 }
 
-.lista-produtos-single .produto-info span {
-    font-size: 1.2rem;
-    font-weight: bold;
+.lista-produtos-single span {
+    margin: 0 20px;
 }
 
 .lista-produtos-single button {
     background-color: red;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 5px; /* Espaço entre o ícone e o texto */
 }
 
 .lista-produtos-single button:hover {
     background-color: darkred;
 }
 
-/* Total e Botão de Limpar */
+/* Soma dos produtos */
 .soma-produto {
     max-width: 80%;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 0 20px;
     text-align: right;
 }
-
-.soma-produto h1 {
-    font-size: 1.7rem;
+/* Estilo do botão de limpar lista */
+.botao-limpar-lista {
+    background-color: #ff4444; /* Cor de fundo vermelha */
+    color: white; /* Cor do texto */
+    border: none; /* Remove a borda */
+    padding: 10px 20px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de ponteiro */
+    font-size: 1rem; /* Tamanho da fonte */
+    transition: background-color 0.3s ease; /* Transição suave */
 }
 
-#limpar-lista {
-    background-color: blueviolet;
+.botao-limpar-lista:hover {
+    background-color: #cc0000; /* Cor de fundo mais escura ao passar o mouse */
+}
+
+/* Estilo do botão de remover */
+.lista-produtos-single button.remover-produto {
+    background-color: red;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
     transition: background-color 0.3s ease;
 }
 
-#limpar-lista:hover {
-    background-color: darkblue;
+.lista-produtos-single button.remover-produto:hover {
+    background-color: darkred;
 }
 
-/* Media Queries para Responsividade */
+/* Estilo do ícone de lixeira */
+.lista-produtos-single button.remover-produto i {
+    font-size: 1rem;
+}
+/* Oculta o total inicialmente */
+.soma-produto {
+    display: none;
+    max-width: 80%;
+    margin: 20px auto;
+    text-align: right;
+}
+
+/* Estilos específicos para dispositivos móveis */
 @media (max-width: 768px) {
-    body {
-        font-size: 16px;
-    }
-
-    header {
-        height: 60px; /* Ajusta a altura do header para dispositivos móveis */
-        padding: 10px; /* Ajusta o padding do header para dispositivos móveis */
-    }
-
-    header h2 {
-        font-size: 1.8rem; /* Ajusta o tamanho da fonte do título para dispositivos móveis */
-    }
-
+    /* Oculta o formulário por padrão em dispositivos móveis */
     .lista-cadastro {
-        flex-direction: column;
-        max-width: 100%;
+        display: none;
         position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        bottom: 80px;
+        left: 20px;
+        right: 20px;
         background-color: white;
-        padding: 10px;
-        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
     }
 
-    .lista-cadastro input[type="text"] {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    .lista-cadastro input[type="submit"] {
-        width: 100%;
-    }
-
-    .lista-produtos {
-        max-width: 90%;
-        padding: 0 10px;
-        margin-bottom: 80px; /* Espaço para o formulário fixo na parte inferior */
-    }
-
-    .lista-produtos-single {
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .lista-produtos-single .produto-info {
-        display: flex;
-        align-items: center;
-        gap: 10px; /* Espaço entre o nome e o preço */
-        flex: 1;
-    }
-
-    .lista-produtos-single h3 {
-        font-weight: 400;
-        font-size: 1.3rem;
-    }
-
-    .lista-produtos-single .produto-info span {
-        font-size: 1.2rem;
-        font-weight: bold;
-    }
-
-    .lista-produtos-single button {
-        background-color: red;
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 5px; /* Espaço entre o ícone e o texto */
-    }
-
-    .lista-produtos-single button:hover {
-        background-color: darkred;
-    }
-    
-    .soma-produto {
-        max-width: 90%;
-        margin: 0 auto;
-        padding: 0 10px;
-        text-align: right;
-        margin-bottom: 20px; /* Ajusta o margin-bottom para dispositivos móveis */
-    }
-
-    .soma-produto h1 {
-        font-size: 1.5rem; /* Ajusta o tamanho da fonte do total para dispositivos móveis */
-    }
-
-    #limpar-lista {
+    /* Mostra o botão de "+" em dispositivos móveis */
+    .botao-adicionar {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
         background-color: blueviolet;
         color: white;
         border: none;
-        padding: 10px 20px;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
         cursor: pointer;
-        margin-top: 10px;
-        transition: background-color 0.3s ease;
-        width: 100%; /* Ajusta a largura do botão para dispositivos móveis */
     }
 
-    #limpar-lista:hover {
+    .botao-adicionar:hover {
         background-color: darkblue;
     }
-    .soma-produto {
-        display: none; /* Oculta a soma-produtos por padrão */
-    }
-    
-    #limpar-lista {
-        display: none; /* Oculta o botão de limpar lista por padrão */
-    }
-
 }
