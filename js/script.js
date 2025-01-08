@@ -86,6 +86,14 @@ function verificarExibicaoSoma() {
 
 // Evento para abrir o formulário ao clicar no botão "+"
 abrirFormularioBtn.addEventListener("click", abrirFormulario);
+// Função para capitalizar a primeira letra de cada palavra
+function capitalizarString(str) {
+    return str
+        .toLowerCase()
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+}
 
 // Evento para adicionar um produto ao carrinho ao enviar o formulário
 formulario.addEventListener("submit", function (e) {
@@ -96,7 +104,8 @@ formulario.addEventListener("submit", function (e) {
     const valorDoProduto = parseFloat(valorDoProdutoInput);
 
     if (validarDados(nomeDoProduto, valorDoProduto)) {
-        adicionarProdutoAoCarrinho(nomeDoProduto, valorDoProduto);
+        const nomeFormatado = capitalizarString(nomeDoProduto); // Aplica a função de capitalização
+        adicionarProdutoAoCarrinho(nomeFormatado, valorDoProduto); // Adiciona o produto com o nome formatado
         atualizarTotal(valorDoProduto);
         somaProdutoDiv.style.display = "flex"; // Exibe a soma dos produtos
         formulario.reset(); // Reseta o formulário
@@ -119,14 +128,6 @@ listaProdutosDiv.addEventListener("click", function (e) {
         }
     }
 });
-
-/* ------------ */
-const inputNome = formulario.querySelector('input[name="nome do produto"]');
-inputNome.addEventListener("focus", () => {
-    console.log("Campo de nome recebeu foco");
-});
-
-/* ------------ */
 
 // Evento para limpar a lista ao clicar no botão de limpar
 limparListaBtn.addEventListener("click", limparLista);

@@ -125,15 +125,16 @@ header h2 {
     display: none; /* Inicialmente oculta a soma dos produtos */
 }
 .soma-produto {
-
     max-width: 80%;
-    margin: 20px auto;
+    margin: 10px auto;
     padding: 10px;
     background-color: rgb(240, 240, 240);
     border-radius: 5px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     font-weight: bold;
+    margin-bottom: 100px;
 }
 
 /* Botão de Limpar Lista */
@@ -158,7 +159,41 @@ header h2 {
 @media (max-width: 768px) {
     header h2 {
         font-weight: 700;
-        font-size: 2.0rem;
+        font-size: 1.8rem;
+    }
+    .lista-cadastro input[type="text"] {
+        font-size: 1rem; 
+    }
+    .botao-adicionar-produto {
+        font-size: 0.9rem; /* Reduzido de 1rem para 0.9rem */
+    }
+
+    .botao-limpar-lista {
+        font-size: 1.2rem; /* Aumentado para melhorar a legibilidade */
+        padding: 12px 20px; /* Aumenta o padding para facilitar o toque */
+    }
+
+    .lista-produtos-single h3 {
+        font-size: 1.1rem; /* Reduzido de 1.3rem para 1.1rem */
+    }
+
+    .lista-produtos-single span {
+        font-size: 1rem; /* Ajuste para 1rem */
+    }
+
+    .lista-produtos-single button {
+        font-size: 0.9rem; /* Reduzido de 1rem para 0.9rem */
+    }
+
+    .soma-produto {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 100px;
+    }
+    .soma-produto h1 {
+        margin-bottom: 8px;
+        font-size: 1.5rem; /* Reduzido de 1.5rem para 1.2rem */
     }
 
     /* Formulário de Cadastro */
