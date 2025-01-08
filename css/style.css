@@ -4,8 +4,14 @@
     margin: 0;
     padding: 0;
 }
-
 body {
+    position: relative;
+    background-image: url('../images/fundo.jpg'); 
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+    
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     display: flex;
@@ -13,17 +19,28 @@ body {
     min-height: 100vh;
 }
 
+/* Adiciona uma camada semi-transparente sobre a imagem de fundo */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8); 
+    z-index: -1; /* Coloca a camada atrás do conteúdo */
+}
+
 /* Cabeçalho */
 header {
+    background-color: rgba(137, 43, 226, 0.9);
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 80px;
-    background-color: blueviolet;
-    color: white;
     text-align: center;
 }
-
 header h2 {
     font-weight: 700;
     font-size: 2.2rem;
@@ -36,13 +53,14 @@ header h2 {
 
 /* Formulário de Cadastro */
 .lista-cadastro {
-    display: flex; /* Exibe o formulário por padrão */
+    background-color: rgba(255, 255, 255);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
     max-width: 80%;
-    margin: 20px auto;
-    padding: 0 20px;
+    margin: 10px auto;
+    padding: 20px;
     gap: 10px;
+    border-radius: 10px;
 }
-
 .lista-cadastro input[type="text"] {
     flex: 1;
     padding: 10px;
@@ -73,9 +91,11 @@ header h2 {
 
 /* Lista de Produtos */
 .lista-produtos {
+    
     max-width: 80%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 10px 20px;
+    border-radius: 10px;
 }
 
 .lista-produtos-single {
@@ -84,7 +104,7 @@ header h2 {
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #ccc;
-    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
     gap: 10px;
 }
 
@@ -124,12 +144,14 @@ header h2 {
 .soma-produto {
     display: none; /* Inicialmente oculta a soma dos produtos */
 }
+
 .soma-produto {
+    background-color: rgba(219, 219, 219, 0.944);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
     max-width: 80%;
     margin: 10px auto;
-    padding: 10px;
-    background-color: rgb(240, 240, 240);
-    border-radius: 5px;
+    padding: 20px;
+    border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -156,68 +178,69 @@ header h2 {
 /* Responsividade */
 
 /* Estilos para telas menores (até 768px) */
+/* Estilos para telas menores (até 768px) */
 @media (max-width: 768px) {
+    /* Ajustes no cabeçalho */
     header h2 {
-        font-weight: 700;
         font-size: 1.8rem;
     }
-    .lista-cadastro input[type="text"] {
-        font-size: 1rem; 
-    }
-    .botao-adicionar-produto {
-        font-size: 0.9rem; /* Reduzido de 1rem para 0.9rem */
-    }
 
-    .botao-limpar-lista {
-        font-size: 1.2rem; /* Aumentado para melhorar a legibilidade */
-        padding: 12px 20px; /* Aumenta o padding para facilitar o toque */
-    }
-
-    .lista-produtos-single h3 {
-        font-size: 1.1rem; /* Reduzido de 1.3rem para 1.1rem */
-    }
-
-    .lista-produtos-single span {
-        font-size: 1rem; /* Ajuste para 1rem */
-    }
-
-    .lista-produtos-single button {
-        font-size: 0.9rem; /* Reduzido de 1rem para 0.9rem */
-    }
-
-    .soma-produto {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 100px;
-    }
-    .soma-produto h1 {
-        margin-bottom: 8px;
-        font-size: 1.5rem; /* Reduzido de 1.5rem para 1.2rem */
-    }
-
-    /* Formulário de Cadastro */
+    /* Ajustes no formulário de cadastro */
     .lista-cadastro {
-        position: fixed; /* Fixa o formulário na parte inferior */
+        position: fixed;
         flex-direction: column;
         max-width: 100%;
         bottom: 0;
         left: 0;
         right: 0;
-        background-color: white; 
+        background-color: white;
         box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
         padding: 10px 20px;
         margin: 0;
         z-index: 1000;
     }
 
-    /* Lista de Produtos */
-    .lista-produtos {
-        padding-bottom: 80px; /* Espaço para o formulário fixo */
+    /* Ajustes nos botões */
+    .botao-adicionar-produto,
+    .botao-limpar-lista {
+        font-size: 1.2rem;
+        padding: 12px 20px;
     }
 
+    /* Ajustes na lista de produtos */
+    .lista-produtos {
+        max-width: 90%;
+    }
+
+    .lista-produtos-single {
+        font-size: 1.1rem;
+    }
+
+    .lista-produtos-single span {
+        margin: 0 5px;
+        font-size: 1rem;
+    }
+
+    .lista-produtos-single button {
+        font-size: 0.9rem;
+    }
+
+    /* Ajustes na soma dos produtos */
+    .soma-produto {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 100px;
+    }
+
+    .soma-produto h1 {
+        margin-bottom: 8px;
+        font-size: 1.5rem;
+    }
+
+    /* Botão de adicionar (visível apenas em dispositivos móveis) */
     .botao-adicionar {
-        display: flex; /* Exibe o botão "+" em telas menores */
+        display: flex;
         position: fixed;
         bottom: 20px;
         right: 20px;
@@ -237,14 +260,4 @@ header h2 {
     .botao-adicionar:hover {
         background-color: darkblue;
     }
-
-    /* Lista de Produtos */
-    .lista-produtos {
-        max-width: 90%;
-        padding: 0;
-    }
-    .lista-produtos-single span {
-        margin: 0 5px;
-    }
-
 }
