@@ -63,10 +63,11 @@ header h2 {
 }
 .lista-cadastro input[type="text"] {
     flex: 1;
-    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline-color: blueviolet;
+    font-size: 1rem;
+    padding: 10px 20px;
 }
 
 
@@ -116,6 +117,8 @@ header h2 {
 
 .lista-produtos-single span {
     margin: 0 20px;
+    font-weight: 400;
+    font-size: 1.3rem;
 }
 
 .lista-produtos-single button {
@@ -178,7 +181,6 @@ header h2 {
 /* Responsividade */
 
 /* Estilos para telas menores (até 768px) */
-/* Estilos para telas menores (até 768px) */
 @media (max-width: 768px) {
     /* Ajustes no cabeçalho */
     header h2 {
@@ -201,10 +203,11 @@ header h2 {
     }
 
     /* Ajustes nos botões */
+    .lista-cadastro input[type="text"],
     .botao-adicionar-produto,
     .botao-limpar-lista {
-        font-size: 1.2rem;
-        padding: 12px 20px;
+        font-size: 1.1rem;
+        padding: 10px 20px;
     }
 
     /* Ajustes na lista de produtos */
@@ -212,8 +215,8 @@ header h2 {
         max-width: 90%;
     }
 
-    .lista-produtos-single {
-        font-size: 1.1rem;
+    .lista-produtos-single h3 {
+        font-size: 1rem;
     }
 
     .lista-produtos-single span {
