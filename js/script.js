@@ -120,9 +120,6 @@ const inputNome = formulario.querySelector('input[name="nome do produto"]');
 inputNome.addEventListener("focus", () => {
     console.log("Campo de nome recebeu foco");
 });
-formulario.addEventListener("click", (e) => {
-    e.stopPropagation(); // Impede a propagação do evento
-});
 
 /* ------------ */
 

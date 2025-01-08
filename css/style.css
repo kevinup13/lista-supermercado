@@ -163,7 +163,7 @@ header h2 {
 
     /* Formulário de Cadastro */
     .lista-cadastro {
-        /* position: fixed; */ /* Fixa o formulário na parte inferior */
+        position: fixed; /* Fixa o formulário na parte inferior */
         flex-direction: column;
         max-width: 100%;
         bottom: 0;
