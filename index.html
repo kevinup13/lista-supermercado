@@ -22,9 +22,10 @@
 
         <!-- Formulário para adicionar produtos -->
         <form class="lista-cadastro">
-            <input type="text" placeholder="Nome do Produto" name="nome do produto" required>
-            <input type="text" placeholder="Preço (ex: 10,00)" name="valor do produto" required>
-            <button type="submit" class="botao-adicionar-produto">
+            <input type="text" class="campo-entrada" placeholder="Nome do Produto" name="nome do produto" required>
+            <input type="text" class="campo-entrada" placeholder="Preço (ex: 10,00)" name="valor do produto"
+                inputmode="numeric" required>
+            <button type="submit" class="botao botao-adicionar-produto">
                 <i class="fas fa-check"></i> Adicionar
             </button>
         </form>
@@ -35,7 +36,7 @@
         <!-- Exibe a soma total de produtos na lista-->
         <div class="soma-produto">
             <h1>Total: R$00,00</h1>
-            <button id="limpar-lista" class="botao-limpar-lista">Limpar Lista</button>
+            <button id="limpar-lista" class="botao botao-limpar-lista">Limpar Lista</button>
         </div>
 
     </main>

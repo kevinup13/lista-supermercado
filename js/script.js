@@ -78,7 +78,7 @@ function limparLista() {
 // Função para verificar se há produtos na lista e exibir/ocultar a soma
 function verificarExibicaoSoma() {
     if (listaProdutosDiv.children.length > 0) {
-        somaProdutoDiv.style.display = "block"; // Exibe a soma se houver produtos
+        somaProdutoDiv.style.display = "flex"; // Exibe a soma se houver produtos
     } else {
         somaProdutoDiv.style.display = "none"; // Oc ulta a soma se não houver produtos
     }

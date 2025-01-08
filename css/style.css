@@ -47,6 +47,29 @@ header h2 {
     margin: 10px 0;
 }
 
+/* Estilos Compartilhados para Botões */
+.botao {
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: background-color 0.3s ease;
+}
+.botao:hover {
+    background-color: darkblue;
+}/* Botão de Limpar Lista */
+
+.botao-limpar-lista:hover {
+    background-color: #cc0000;
+}
+ 
 .botao-adicionar {
     display: none; /* Oculta o botão "+" por padrão */
 }
@@ -61,7 +84,7 @@ header h2 {
     gap: 10px;
     border-radius: 10px;
 }
-.lista-cadastro input[type="text"] {
+.campo-entrada {
     flex: 1;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -144,9 +167,6 @@ header h2 {
 }
 
 /* Soma dos Produtos */
-.soma-produto {
-    display: none; /* Inicialmente oculta a soma dos produtos */
-}
 
 .soma-produto {
     background-color: rgba(219, 219, 219, 0.944);
@@ -155,28 +175,14 @@ header h2 {
     margin: 10px auto;
     padding: 20px;
     border-radius: 10px;
-    display: flex;
+    display: none; /* Inicialmente oculta a soma dos produtos */
     flex-wrap: wrap;
     justify-content: space-between;
     font-weight: bold;
     margin-bottom: 100px;
 }
 
-/* Botão de Limpar Lista */
-.botao-limpar-lista {
-    background-color: #ff4444;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
 
-.botao-limpar-lista:hover {
-    background-color: #cc0000;
-}
 
 /* Responsividade */
 
@@ -203,7 +209,7 @@ header h2 {
     }
 
     /* Ajustes nos botões */
-    .lista-cadastro input[type="text"],
+    .campo-entrada,
     .botao-adicionar-produto,
     .botao-limpar-lista {
         font-size: 1.1rem;
@@ -216,12 +222,12 @@ header h2 {
     }
 
     .lista-produtos-single h3 {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .lista-produtos-single span {
         margin: 0 5px;
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .lista-produtos-single button {
