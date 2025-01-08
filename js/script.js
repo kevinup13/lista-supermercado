@@ -115,6 +115,17 @@ listaProdutosDiv.addEventListener("click", function (e) {
     }
 });
 
+/* ------------ */
+const inputNome = formulario.querySelector('input[name="nome do produto"]');
+inputNome.addEventListener("focus", () => {
+    console.log("Campo de nome recebeu foco");
+});
+formulario.addEventListener("click", (e) => {
+    e.stopPropagation(); // Impede a propagação do evento
+});
+
+/* ------------ */
+
 // Evento para limpar a lista ao clicar no botão de limpar
 limparListaBtn.addEventListener("click", limparLista);
 
