@@ -36,19 +36,28 @@ function atualizarTotal(valorDoProduto) {
 
 // Função para verificar a largura da tela (sem fechar o formulário)
 function verificarLarguraTela() {
-    if (window.innerWidth > 768) {
-        formulario.style.display = "flex"; // Exibe o formulário em telas maiores
-        abrirFormularioBtn.style.display = "none"; // Oculta o botão "+"
-    } else {
-        abrirFormularioBtn.style.display = "flex"; // Exibe o botão "+" em telas menores
+    // Verifica se algum dos campos do formulário está focado
+    const campoFocado = document.activeElement.tagName === "INPUT" || document.activeElement.tagName === "TEXTAREA";
+
+    if (!campoFocado) {
+        if (window.innerWidth > 768) {
+            formulario.style.display = "flex"; // Exibe o formulário em telas maiores
+            abrirFormularioBtn.style.display = "none"; // Oculta o botão "+"
+        } else {
+            formulario.style.display = "none"; // Oculta o formulário em telas menores
+            abrirFormularioBtn.style.display = "flex"; // Exibe o botão "+"
+        }
     }
 }
+
 
 // Função para abrir o formulário (dispositivos móveis)
 function abrirFormulario() {
     formulario.style.display = "flex"; // Exibe o formulário
     abrirFormularioBtn.style.display = "none"; // Oculta o botão "+"
+    formulario.querySelector('input[name="nome do produto"]').focus(); // Foca no campo de entrada automaticamente
 }
+
 
 /// Função para fechar o formulário (apenas quando necessário)
 function fecharFormulario() {
