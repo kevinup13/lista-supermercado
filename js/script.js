@@ -3,18 +3,21 @@ const abrirFormularioBtn = document.getElementById("abrir-formulario");
 const formulario = document.querySelector(".lista-cadastro");
 const listaProdutosDiv = document.querySelector(".lista-produtos");
 const totalElement = document.querySelector(".soma-produto h1");
-const somaProdutoDiv = document.querySelector(".soma-produto"); // Seleciona o container do total
+const somaProdutoDiv = document.querySelector(".soma-produto");
+const limparListaBtn = document.getElementById("limpar-lista");
+
+// Variável para armazenar o total dos produtos
 let total = 0;
 
-// Função para abrir o formulário (dispositivos móveis)
-abrirFormularioBtn.addEventListener("click", function () {
-    formulario.style.display = "flex"; // Exibe o formulário
-    abrirFormularioBtn.style.display = "none"; // Oculta o botão "+"
-});
+// Função para validar os dados do produto
+function validarDados(nome, valor) {
+    const nomeValido = typeof nome === 'string' && nome.trim() !== '';
+    const valorValido = !isNaN(valor) && valor > 0;
+    return nomeValido && valorValido;
+}
 
-// Função para adicionar produto ao carrinho
+// Função para adicionar um produto ao carrinho
 function adicionarProdutoAoCarrinho(nomeDoProduto, valorDoProduto) {
-    // Cria um novo elemento para o produto
     const produtoElement = document.createElement("div");
     produtoElement.classList.add("lista-produtos-single");
     produtoElement.innerHTML = `
@@ -31,67 +34,95 @@ function atualizarTotal(valorDoProduto) {
     totalElement.textContent = `Total: R$${total.toFixed(2)}`;
 }
 
-// Função para fechar o formulário e exibir o botão "+"
-function fecharFormulario() {
-    formulario.style.display = "none"; // Fecha o formulário
-    abrirFormularioBtn.style.display = "flex"; // Exibe o botão "+"
+// Função para exibir ou ocultar o formulário com base na largura da tela
+function verificarLarguraTela() {
+    if (window.innerWidth > 768) {
+        formulario.style.display = "flex"; // Exibe o formulário em telas maiores
+        abrirFormularioBtn.style.display = "none"; // Oculta o botão "+"
+    } else {
+        formulario.style.display = "none"; // Oculta o formulário em telas menores
+        abrirFormularioBtn.style.display = "flex"; // Exibe o botão "+"
+    }
 }
 
-// Função para adicionar produto
+// Função para abrir o formulário (dispositivos móveis)
+function abrirFormulario() {
+    formulario.style.display = "flex"; // Exibe o formulário
+    abrirFormularioBtn.style.display = "none"; // Oculta o botão "+"
+}
+
+// Função para fechar o formulário e exibir o botão "+" apenas em telas menores
+function fecharFormulario() {
+    if (window.innerWidth <= 768) {
+        formulario.style.display = "none"; // Oculta o formulário
+        abrirFormularioBtn.style.display = "flex"; // Exibe o botão "+"
+    } else {
+        formulario.style.display = "flex"; // Mantém o formulário visível em telas maiores
+        abrirFormularioBtn.style.display = "none"; // Oculta o botão "+"
+    }
+}
+
+// Função para limpar a lista de produtos
+function limparLista() {
+    listaProdutosDiv.innerHTML = ""; // Limpa a lista de produtos
+    total = 0; // Reseta o total
+    totalElement.textContent = `Total: R$00,00`; // Atualiza o total exibido
+    somaProdutoDiv.style.display = "none"; // Oculta a soma dos produtos
+}
+
+// Função para verificar se há produtos na lista e exibir/ocultar a soma
+function verificarExibicaoSoma() {
+    if (listaProdutosDiv.children.length > 0) {
+        somaProdutoDiv.style.display = "block"; // Exibe a soma se houver produtos
+    } else {
+        somaProdutoDiv.style.display = "none"; // Oc ulta a soma se não houver produtos
+    }
+}
+
+// Evento para abrir o formulário ao clicar no botão "+"
+abrirFormularioBtn.addEventListener("click", abrirFormulario);
+
+// Evento para adicionar um produto ao carrinho ao enviar o formulário
 formulario.addEventListener("submit", function (e) {
-    e.preventDefault(); // Impede o comportamento padrão do formulário
+    e.preventDefault();
 
-    // Captura os valores dos inputs
     const nomeDoProduto = formulario.querySelector('input[name="nome do produto"]').value.trim();
-    const valorDoProduto = parseFloat(formulario.querySelector('input[name="valor do produto"]').value.trim().replace(",", "."));
+    const valorDoProdutoInput = formulario.querySelector('input[name="valor do produto"]').value.trim().replace(",", ".");
+    const valorDoProduto = parseFloat(valorDoProdutoInput);
 
-    // Verifica se os campos estão preenchidos corretamente
-    if (nomeDoProduto && !isNaN(valorDoProduto) && valorDoProduto > 0) {
-        // Adiciona o produto ao carrinho
+    if (validarDados(nomeDoProduto, valorDoProduto)) {
         adicionarProdutoAoCarrinho(nomeDoProduto, valorDoProduto);
-
-        // Atualiza o total
         atualizarTotal(valorDoProduto);
-
-        // Exibe o total (se estiver oculto)
-        if (window.getComputedStyle(somaProdutoDiv).display === "none") {
-            somaProdutoDiv.style.display = "block";
-        }
-
-        // Limpa os campos do formulário
-        formulario.reset();
-
-        // Fecha o formulário e exibe o botão "+"
-        fecharFormulario();
+        somaProdutoDiv.style.display = "flex"; // Exibe a soma dos produtos
+        formulario.reset(); // Reseta o formulário
+        fecharFormulario(); // Fecha o formulário após adicionar o produto
     } else {
         alert("Por favor, insira um nome e um valor válido para o produto.");
     }
 });
 
-// Função para remover produtos
+// Evento para remover um produto da lista
 listaProdutosDiv.addEventListener("click", function (e) {
     if (e.target.classList.contains("remover-produto") || e.target.closest(".remover-produto")) {
-        const produtoElement = e.target.closest (".lista-produtos-single");
-        const valorProduto = parseFloat(produtoElement.querySelector("span").textContent.replace("R$", ""));
-
-        // Remove o produto da lista
-        listaProdutosDiv.removeChild(produtoElement);
-
-        // Atualiza o total
-        total -= valorProduto;
-        totalElement.textContent = `Total: R$${total.toFixed(2)}`;
-
-        // Oculta o total se não houver produtos
+        const produtoElement = e.target.closest(".lista-produtos-single");
+        const valorDoProduto = parseFloat(produtoElement.querySelector("span").textContent.replace("R$", ""));
+        listaProdutosDiv.removeChild(produtoElement); // Remove o produto da lista
+        total -= valorDoProduto; // Atualiza o total
+        totalElement.textContent = `Total: R$${total.toFixed(2)}`; // Atualiza o total exibido
         if (listaProdutosDiv.children.length === 0) {
-            somaProdutoDiv.style.display = "none";
+            somaProdutoDiv.style.display = "none"; // Oculta a soma se não houver produtos
         }
     }
 });
 
-// Função para limpar a lista de produtos
-document.getElementById("limpar-lista").addEventListener("click", function () {
-    listaProdutosDiv.innerHTML = ""; // Limpa a lista de produtos
-    total = 0; // Reseta o total
-    totalElement.textContent = `Total: R$00,00`; // Atualiza o total exibido
-    somaProdutoDiv.style.display = "none"; // Oculta o total
-});
+// Evento para limpar a lista ao clicar no botão de limpar
+limparListaBtn.addEventListener("click", limparLista);
+
+// Evento para verificar a largura da tela ao redimensionar
+window.addEventListener("resize", verificarLarguraTela);
+
+// Verifica a largura da tela ao carregar a página
+verificarLarguraTela();
+
+// Verifica a exibição da soma ao carregar a página
+verificarExibicaoSoma();

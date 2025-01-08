@@ -27,15 +27,19 @@ header {
 header h2 {
     font-weight: 700;
     font-size: 2.2rem;
-    margin: 0;
+    margin: 10px 0;
+}
+
+.botao-adicionar {
+    display: none; /* Oculta o botão "+" por padrão */
 }
 
 /* Formulário de Cadastro */
 .lista-cadastro {
+    display: flex; /* Exibe o formulário por padrão */
     max-width: 80%;
     margin: 20px auto;
     padding: 0 20px;
-    display: flex;
     gap: 10px;
 }
 
@@ -47,6 +51,7 @@ header h2 {
     outline-color: blueviolet;
 }
 
+
 .botao-adicionar-produto {
     background-color: blueviolet;
     color: white;
@@ -57,14 +62,16 @@ header h2 {
     font-size: 1rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 5px;
+    transition: background-color 0.3s ease;
 }
 
 .botao-adicionar-produto:hover {
     background-color: darkblue;
 }
 
-/* Lista de produtos */
+/* Lista de Produtos */
 .lista-produtos {
     max-width: 80%;
     margin: 0 auto;
@@ -95,44 +102,7 @@ header h2 {
     background-color: red;
     color: white;
     border: none;
-    padding: 5px 5px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.lista-produtos-single button:hover {
-    background-color: darkred;
-}
-
-/* Soma dos produtos */
-.soma-produto {
-    max-width: 80%;
-    margin: 20px auto;
-    padding: 0 20px;
-    text-align: right;
-}
-/* Estilo do botão de limpar lista */
-.botao-limpar-lista {
-    background-color: #ff4444; /* Cor de fundo vermelha */
-    color: white; /* Cor do texto */
-    border: none; /* Remove a borda */
-    padding: 10px 20px; /* Espaçamento interno */
-    border-radius: 5px; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor de ponteiro */
-    font-size: 1rem; /* Tamanho da fonte */
-    transition: background-color 0.3s ease; /* Transição suave */
-}
-
-.botao-limpar-lista:hover {
-    background-color: #cc0000; /* Cor de fundo mais escura ao passar o mouse */
-}
-
-/* Estilo do botão de remover */
-.lista-produtos-single button.remover-produto {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
+    padding: 5px 8px;
     border-radius: 5px;
     cursor: pointer;
     display: flex;
@@ -142,40 +112,80 @@ header h2 {
     transition: background-color 0.3s ease;
 }
 
-.lista-produtos-single button.remover-produto:hover {
+.lista-produtos-single button:hover {
     background-color: darkred;
 }
 
-/* Estilo do ícone de lixeira */
-.lista-produtos-single button.remover-produto i {
+.lista-produtos-single button i {
     font-size: 1rem;
 }
-/* Oculta o total inicialmente */
+
+/* Soma dos Produtos */
 .soma-produto {
-    display: none;
+    display: none; /* Inicialmente oculta a soma dos produtos */
+}
+.soma-produto {
+
     max-width: 80%;
     margin: 20px auto;
-    text-align: right;
+    padding: 10px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
 }
 
-/* Estilos específicos para dispositivos móveis */
+/* Botão de Limpar Lista */
+.botao-limpar-lista {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.botao-limpar-lista:hover {
+    background-color: #cc0000;
+}
+
+/* Responsividade */
+
+/* Estilos para telas menores (até 768px) */
 @media (max-width: 768px) {
-    /* Oculta o formulário por padrão em dispositivos móveis */
-    .lista-cadastro {
-        display: none;
-        position: fixed;
-        bottom: 80px;
-        left: 20px;
-        right: 20px;
-        background-color: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        flex-direction: column;
+    header h2 {
+        font-weight: 700;
+        font-size: 2.0rem;
     }
 
-    /* Mostra o botão de "+" em dispositivos móveis */
+    .lista-cadastro {
+        display: none;/* Oculta o formulário em telas menores */
+    }
+
+    /* Formulário de Cadastro */
+    .lista-cadastro {
+        position: fixed; /* Fixa o formulário na parte inferior */
+        flex-direction: column;
+        max-width: 100%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: white; 
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+        padding: 10px 20px;
+        margin: 0;
+    }
+
+    /* Lista de Produtos */
+    .lista-produtos {
+        padding-bottom: 80px; /* Espaço para o formulário fixo */
+    }
+
     .botao-adicionar {
+        display: flex; /* Exibe o botão "+" em telas menores */
         position: fixed;
         bottom: 20px;
         right: 20px;
@@ -185,14 +195,24 @@ header h2 {
         border-radius: 50%;
         width: 60px;
         height: 60px;
-        display: flex;
         justify-content: center;
         align-items: center;
         font-size: 24px;
         cursor: pointer;
+        transition: background-color 0.3s ease;
     }
 
     .botao-adicionar:hover {
         background-color: darkblue;
     }
+
+    /* Lista de Produtos */
+    .lista-produtos {
+        max-width: 90%;
+        padding: 0;
+    }
+    .lista-produtos-single span {
+        margin: 0 5px;
+    }
+
 }
