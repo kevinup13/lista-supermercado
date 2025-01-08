@@ -34,14 +34,13 @@ function atualizarTotal(valorDoProduto) {
     totalElement.textContent = `Total: R$${total.toFixed(2)}`;
 }
 
-// Função para exibir ou ocultar o formulário com base na largura da tela
+// Função para verificar a largura da tela (sem fechar o formulário)
 function verificarLarguraTela() {
     if (window.innerWidth > 768) {
         formulario.style.display = "flex"; // Exibe o formulário em telas maiores
         abrirFormularioBtn.style.display = "none"; // Oculta o botão "+"
     } else {
-        formulario.style.display = "none"; // Oculta o formulário em telas menores
-        abrirFormularioBtn.style.display = "flex"; // Exibe o botão "+"
+        abrirFormularioBtn.style.display = "flex"; // Exibe o botão "+" em telas menores
     }
 }
 
@@ -51,14 +50,11 @@ function abrirFormulario() {
     abrirFormularioBtn.style.display = "none"; // Oculta o botão "+"
 }
 
-// Função para fechar o formulário e exibir o botão "+" apenas em telas menores
+/// Função para fechar o formulário (apenas quando necessário)
 function fecharFormulario() {
     if (window.innerWidth <= 768) {
         formulario.style.display = "none"; // Oculta o formulário
         abrirFormularioBtn.style.display = "flex"; // Exibe o botão "+"
-    } else {
-        formulario.style.display = "flex"; // Mantém o formulário visível em telas maiores
-        abrirFormularioBtn.style.display = "none"; // Oculta o botão "+"
     }
 }
 
