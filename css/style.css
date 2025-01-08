@@ -161,10 +161,6 @@ header h2 {
         font-size: 2.0rem;
     }
 
-    .lista-cadastro {
-        display: none;/* Oculta o formulário em telas menores */
-    }
-
     /* Formulário de Cadastro */
     .lista-cadastro {
         position: fixed; /* Fixa o formulário na parte inferior */
